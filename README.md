@@ -2,6 +2,12 @@
 Offical Open source MCThamPlugin for LiteLoaderBDS (MCTham Helper)
 # What is ThamPlugin
 * ThamPlugin is use for Main MCTham Plugin and that can use for if you need some example.
+# Feature
+* Anti blacklist word
+* Auto kill drop item.
+* Ban plugins.
+* Anti-Spam (Unstable)
+* Helpful info like: /getip player, /getplatform player, /crashclient player, /getpos player
 # FAQ
 * Q: I can use a ThamPlugins on my server?
 * A: Yes you do but under mit licenes and you need edit some code like [This mark](https://github.com/MCTham-Github/MCThamPlugin/blob/main/ThamPlugin/BanHim.cpp#L42) and [This mark too](https://github.com/MCTham-Github/MCThamPlugin/blob/main/ThamPlugin/BanHim.cpp#L86) and [Also i almost forget](https://github.com/MCTham-Github/MCThamPlugin/blob/main/ThamPlugin/BanHim.cpp#L94)
