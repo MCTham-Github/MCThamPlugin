@@ -70,6 +70,33 @@ public:
         };
 
     };
+    class GetUUID : public Command {
+    public:
+        CommandSelector<Player> pl;
+    public:
+        void execute(CommandOrigin const& ori, CommandOutput& outp) const {
+            auto res = pl.results(ori);
+            for (auto p : res) {
+                outp.success("Player: " + p->getName() + " UUID: " + p->getUuid());
+            }
+
+        };
+
+    };
+    class GetPing : public Command {
+    public:
+        CommandSelector<Player> pl;
+    public:
+        void execute(CommandOrigin const& ori, CommandOutput& outp) const {
+            auto res = pl.results(ori);
+            for (auto p : res) {
+                int ping = p->getAvgPing();
+                outp.success("Player: " + p->getName() + " Ping: " + std::to_string(ping) + "ms");
+            }
+
+        };
+
+    };
     class helpfulclass {
     public:
         static void setupgetplatform(CommandRegistry* registry) {
@@ -100,12 +127,28 @@ public:
                 { (CommandFlagValue)0 }, { (CommandFlagValue)0x80 });
             registry->registerOverload<GetPOS>("getpos", makeMandatory(&GetPOS::pl, "Player"));
         }
+        static void setupgetuuid(CommandRegistry* registry) {
+            using RegisterCommandHelper::makeMandatory;
+            using RegisterCommandHelper::makeOptional;
+            registry->registerCommand("getuuid", "giving a player uuid", CommandPermissionLevel::GameMasters,
+                { (CommandFlagValue)0 }, { (CommandFlagValue)0x80 });
+            registry->registerOverload<GetUUID>("getuuid", makeMandatory(&GetUUID::pl, "Player"));
+        }
+        static void setupgetping(CommandRegistry* registry) {
+            using RegisterCommandHelper::makeMandatory;
+            using RegisterCommandHelper::makeOptional;
+            registry->registerCommand("getping", "giving a player ping", CommandPermissionLevel::GameMasters,
+                { (CommandFlagValue)0 }, { (CommandFlagValue)0x80 });
+            registry->registerOverload<GetPing>("getping", makeMandatory(&GetPing::pl, "Player"));
+        }
         void Load() {
             Event::RegCmdEvent::subscribe([](const Event::RegCmdEvent& e) {
                 setupgetplatform(e.mCommandRegistry);
                 setupgetip(e.mCommandRegistry);
                 setupcrashclient(e.mCommandRegistry);
                 setupgetpos(e.mCommandRegistry);
+                setupgetuuid(e.mCommandRegistry);
+                setupgetping(e.mCommandRegistry);
                 return true;
                 });
         }

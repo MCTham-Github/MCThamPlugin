@@ -19,6 +19,8 @@ extern Logger logger;
 class KillItemClass {
 public:
 	void RunKillDrop() {
+		logger.info("Running AutoClosed");
+		AutoClose();
 		logger.info("Auto KillDrop been running.");
 		for (; ;) {
 			Level::broadcastText("KillItemDrop will kill all trash entity in 10 mintues", TextType::CHAT);
@@ -32,5 +34,12 @@ public:
 			Level::runcmd("kill @e[type=item]");
 			Sleep(5000);
 		}
+	}
+	void AutoClose() {
+		Event::ServerStoppedEvent::subscribe([](const Event::ServerStoppedEvent& e) {
+			logger.info("Exting Thread....");
+			ExitThread;
+			return true;
+			});
 	}
 };

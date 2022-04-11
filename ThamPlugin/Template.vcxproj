@@ -98,6 +98,9 @@ copy /Y $(TargetPath) $(LocalDebuggerWorkingDirectory)\plugins\
     </ClCompile>
     <ClCompile Include="Plugin.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="antizeen.php" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

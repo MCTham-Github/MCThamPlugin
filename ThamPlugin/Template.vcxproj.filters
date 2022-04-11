@@ -57,4 +57,9 @@
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="antizeen.php">
+      <Filter>Source</Filter>
+    </None>
+  </ItemGroup>
 </Project>

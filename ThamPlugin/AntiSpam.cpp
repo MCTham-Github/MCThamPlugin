@@ -47,6 +47,10 @@ public:
     string mostspammessage;
     string lastmessage;
 	void loadantispam() {
+        Event::ServerStoppedEvent::subscribe([](const Event::ServerStoppedEvent& e) {
+            ExitThread;
+            return true;
+            });
 		Event::PlayerChatEvent::subscribe([&](const Event::PlayerChatEvent& ev) {
             if (ev.mMessage == lastmessage) {
                 mostspammessage = lastmessage;

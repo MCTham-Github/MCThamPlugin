@@ -16,6 +16,7 @@ Offical Open source MCThamPlugin for LiteLoaderBDS (MCTham Helper)
 * Q: This code is so sucks i can help you?
 * A: You can help we us to add new feature and more in [pull](https://github.com/MCTham-Github/MCThamPlugin/pulls)
 # Work in Process and Patch
+* April 11 2022: Fixing Bugs and Add command in helpful command (/getuuid, /getping)
 * April 9 2022: Upload source code to github.
 # Also Thanks for
 * [LiteLoaderBDS](https://github.com/LiteLDev/LiteLoaderBDS) For MCTham Server Client.
